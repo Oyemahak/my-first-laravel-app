@@ -1,22 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head><title>Students</title></head>
-<body>
-    <h1>All Students</h1>
-    <a href="{{ route('students.create') }}">Add Student</a>
-    <ul>
-        @foreach ($students as $student)
-            <li>
-                <a href="{{ route('students.show', $student->id) }}">
-                    {{ $student->fname }} {{ $student->lname }}
-                </a>
-                | <a href="{{ route('students.edit', $student->id) }}">Edit</a>
-                <form method="POST" action="{{ route('students.destroy', $student->id) }}" style="display:inline;">
-                    @csrf @method('DELETE')
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
+@extends('layouts.app')
+
+@section('content')
+<h1 class="mb-3">All Students</h1>
+
+<a class="btn btn-primary btn-sm mb-3" href="{{ route('students.create') }}">Add Student</a>
+
+@if($students->count())
+    <table class="table table-bordered align-middle">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th style="width: 180px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach ($students as $s)
+            <tr>
+                <td>
+                    <a href="{{ route('students.show', $s->id) }}">
+                        {{ $s->fname }} {{ $s->lname }}
+                    </a>
+                </td>
+                <td>{{ $s->email }}</td>
+                <td>
+                    <a class="btn btn-outline-secondary btn-sm" href="{{ route('students.edit', $s->id) }}">Edit</a>
+                    <form class="d-inline" method="POST" action="{{ route('students.destroy', $s->id) }}">
+                        @csrf @method('DELETE')
+                        <button class="btn btn-outline-danger btn-sm" type="submit"
+                                onclick="return confirm('Delete this student?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
         @endforeach
-    </ul>
-</body>
-</html>
+        </tbody>
+    </table>
+@else
+    <div class="alert alert-info">No students yet.</div>
+@endif
+@endsection
