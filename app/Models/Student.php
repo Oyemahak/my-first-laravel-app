@@ -9,6 +9,17 @@ class Student extends Model
 {
     use HasFactory;
 
-    // Required for seeder to insert values
     protected $fillable = ['fname', 'lname', 'email'];
+
+    // Many-to-many: student to courses
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class)->withTimestamps();
+    }
+
+    // Optional convenience accessor
+    public function getFullNameAttribute(): string
+    {
+        return trim("{$this->fname} {$this->lname}");
+    }
 }

@@ -11,7 +11,8 @@
             <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th style="width: 180px;">Actions</th>
+                <th>Courses</th>
+                <th style="width: 220px;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                     </a>
                 </td>
                 <td>{{ $s->email }}</td>
+                <td>
+                    {{ $s->courses->pluck('name')->join(', ') ?: '—' }}
+                </td>
                 <td>
                     <a class="btn btn-outline-secondary btn-sm" href="{{ route('students.edit', $s->id) }}">Edit</a>
                     <form class="d-inline" method="POST" action="{{ route('students.destroy', $s->id) }}">

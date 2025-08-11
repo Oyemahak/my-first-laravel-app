@@ -10,14 +10,22 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Professor</th>
                 <th>Description</th>
-                <th style="width: 180px;">Actions</th>
+                <th style="width: 200px;">Actions</th>
             </tr>
         </thead>
         <tbody>
         @foreach ($courses as $c)
             <tr>
                 <td><a href="{{ route('courses.show', $c->id) }}">{{ $c->name }}</a></td>
+                <td>
+                    @if($c->professor)
+                        {{ $c->professor->name ?? ($c->professor->fname.' '.$c->professor->lname) }}
+                    @else
+                        —
+                    @endif
+                </td>
                 <td>{{ $c->description }}</td>
                 <td>
                     <a class="btn btn-outline-secondary btn-sm" href="{{ route('courses.edit', $c->id) }}">Edit</a>
