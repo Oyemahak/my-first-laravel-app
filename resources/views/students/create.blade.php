@@ -16,7 +16,7 @@
                         name="fname"
                         value="{{ old('fname') }}"
                         class="form-control @error('fname') is-invalid @enderror"
-                        placeholder="e.g., Ada"
+                        placeholder="e.g., Mahak"
                     >
                     @error('fname') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
@@ -27,7 +27,7 @@
                         name="lname"
                         value="{{ old('lname') }}"
                         class="form-control @error('lname') is-invalid @enderror"
-                        placeholder="e.g., Lovelace"
+                        placeholder="e.g., Patel"
                     >
                     @error('lname') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>

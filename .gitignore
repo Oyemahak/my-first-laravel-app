@@ -10,7 +10,7 @@ Homestead.yaml
 Homestead.json
 *.log
 
-# Laravel IDE helper (optional)
+# Laravel IDE helper
 .phpstorm.meta.php
 _ide_helper.php
 _ide_helper_models.php
@@ -40,15 +40,15 @@ pnpm-debug.log*
 /build
 /.vite
 
-# SQLite DB (if used)
+# SQLite DB
 *.sqlite
 *.sqlite3
 
-# VSCode / Mac
+# Editors
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
 
-# Git
+# Git merge conflicts
 *.orig
